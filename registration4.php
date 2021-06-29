@@ -94,11 +94,12 @@
                     </tr>
                     <tr> 
                         <td></td>
-                        <td> <input type="submit" value="Next"></td> 
+                        <td> <input type="submit" value="Submit"></td> 
                     </tr> 
                 </table>
             </fieldset>
         </form>
+        <?php echo $hasError?"":'<a href="./registrationform5.php"><button>Next</button></a>' ?>
     </body>
 </html>
   
