@@ -99,7 +99,7 @@
                 </table>
             </fieldset>
         </form>
-        <?php echo $hasError?"":'<a href="./registrationform5.php"><button>Next</button></a>' ?>
+        <a href="./registrationform5.php"><button>Next</button></a>
     </body>
 </html>
   

@@ -136,7 +136,7 @@
 ?>
 <html>
     <head>
-        <title>Reg</title>
+        <title>Reg 5</title>
     </head>
     <body>
         <form action="" method="post">
@@ -202,5 +202,6 @@
                 </table>
             </fieldset>
         </form>
+		<a href="./registrationform6.php"><button>Next</button></a>
     </body>
 </html>

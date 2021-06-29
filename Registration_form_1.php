@@ -139,7 +139,7 @@
 				</table>
 			</fieldset>
 		</form>
-		<?php echo $hasError?"":'<a href="./Registration_form_2.php"><button>Next</button></a>' ?>
+		<a href="./Registration_form_2.php"><button>Next</button></a>
 	</body>
 </html>
 
