@@ -58,7 +58,7 @@
 
 <html> 
     <head> 
-        <title>Page Title</title>
+        <title>Sign Up</title>
     </head>
     <body> 
     <?php 

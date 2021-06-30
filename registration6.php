@@ -64,7 +64,7 @@
 
 <html>
     <head>
-        <title>Reg 6</title>
+        <title>Sign Up</title>
     </head>
     <body>
     <?php
@@ -88,7 +88,7 @@
 		</table>
         <form action="" method="post">
             <fieldset>
-                <legend><h2>Account Settings</h2></legend>
+                <legend><h2>Account Info</h2></legend>
                 <table align="center">
                     <tr>
                         <td>Account Number:</td>

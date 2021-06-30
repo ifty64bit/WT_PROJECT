@@ -123,7 +123,7 @@
 ?>
 <html>
 	<head>
-	<title>Personal Information</title>
+	<title>Sign Up</title>
 	</head>
 	<body>
 	<?php

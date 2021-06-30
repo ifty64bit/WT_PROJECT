@@ -112,7 +112,7 @@
 ?>
 <html>
 	<head>
-		<title>User Form</title>
+		<title>Sign Up</title>
 	</head>
 	<body>
 		<?php
@@ -138,7 +138,7 @@
 		</table>
 		<form action="" method="POST">
 			<fieldset>
-				<legend><h2>Sign Up::Step 1</h2></legend>
+				<legend><h2>Personal Info</h2></legend>
 				<table align="center">
 					<tr>
 						<td>Username:</td>

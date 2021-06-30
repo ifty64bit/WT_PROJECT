@@ -136,7 +136,7 @@
 ?>
 <html>
     <head>
-        <title>Reg 5</title>
+        <title>Sign Up</title>
     </head>
     <body>
     <?php 
