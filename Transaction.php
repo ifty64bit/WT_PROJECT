@@ -3,8 +3,8 @@
     $acc_name_error="";
     $acc_number="";
     $acc_number_error="";
-    $tranc_amount="";
-    $tranc_amount_error="";
+    $transc_amount="";
+    $transc_amount_error="";
     $password="";
     $password_error="";
     $hasError=false;
@@ -37,12 +37,12 @@
         if(empty($_POST['transc_amount']))
         {
             $hasError=true;
-            $tranc_amount_error="This Field IS Required";
+            $transc_amount_error="This Field IS Required";
         }
         elseif(!is_numeric($_POST['transc_amount']))
         {
             $hasError=true;
-            $tranc_amount_error="This Field Must Be Numaric";
+            $transc_amount_error="This Field Must Be Numaric";
         }
         else{
             $transc_amount=$_POST['transc_amount'];
@@ -62,36 +62,48 @@
     <head> 
         <title>Send Money</title>
     </head>
-    <body> 
-        <form action="" method="post"> 
-            <table align="center" >
-                <tr> 
-                    <td>Receiver Name:</td> 
-                    <td><input type="text" name="acc_name"></td>
-                    <td><?php echo $acc_name_error ?></td>
-                </tr>
-                <tr>
-                    <td>Accound Number:</td> 
-                    <td><input type="text" name="acc_number"></td> 
-                    <td><?php echo $acc_number_error ?></td>
-                </tr>
-                <tr>
-                    <td>Transaction Amount:</td> 
-                    <td><input type="text" name="transc_amount"></td>
-                    <td><?php echo $tranc_amount_error ?></td>
-                </tr>
-                <tr>
-                    <td>Password:</td> 
-                    <td><input type="Password" name="password"></td>
-                    <td><?php echo $password_error ?></td> 
-                </tr>
+    <body>
+    <?php
+        if(!$hasError)
+        {
+            echo $acc_name."<br>";
+            echo $acc_number."<br>";
+            echo $transc_amount."<br>";
+            echo $password."<br>";
+        }
+    ?>
+        <form action="" method="post">
+            <fieldset>
+                <legend><h2>Transfer Money</h2></legend>
+                <table align="center" >
+                    <tr> 
+                        <td>Receiver Name:</td> 
+                        <td><input type="text" name="acc_name" value="<?php echo $acc_name ?>"></td>
+                        <td><?php echo $acc_name_error ?></td>
+                    </tr>
+                    <tr>
+                        <td>Accound Number:</td> 
+                        <td><input type="text" name="acc_number" value="<?php echo $acc_number ?>"></td> 
+                        <td><?php echo $acc_number_error ?></td>
+                    </tr>
+                    <tr>
+                        <td>Transaction Amount:</td> 
+                        <td><input type="text" name="transc_amount" value="<?php echo $transc_amount ?>" ></td>
+                        <td><?php echo $transc_amount_error ?></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td> 
+                        <td><input type="Password" name="password" value="<?php echo $password ?>"></td>
+                        <td><?php echo $password_error ?></td> 
+                    </tr>
 
-                <tr> 
-                    <td> 
-                        <input type="submit" value="Send Money">
-                    </td> 
-                </tr> 
-            </table>
+                    <tr> 
+                        <td> 
+                            <input type="submit" value="Send Money">
+                        </td> 
+                    </tr> 
+                </table>
+            </fieldset>
         </form>
     </body>
 </html>

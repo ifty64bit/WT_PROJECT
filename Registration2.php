@@ -50,13 +50,22 @@
             $block=$_POST["block"];
         }
 
-		if(isset($_POST["division"]))
+		if(empty(($_POST["division"])))
         {
             $hasError=true;
-            $division_error="Field can not be Empty";
+            $division_error="Select Your Division";
         }
         else{
             $division=$_POST["division"];
+        }
+
+		if(empty($_POST["district"]))
+        {
+            $hasError=true;
+            $district_error="Select Your District";
+        }
+        else{
+            $district=$_POST["district"];
         }
 
 		if(empty($_POST["gender"]))
@@ -74,26 +83,26 @@
             $day_error="Field can not be Empty";
         }
         else{
-            $day=$_POST["day"];
+            $birth_day=$_POST["day"];
 			
         }
 
-		if(isset($_POST["month"]))
+		if(empty($_POST["month"]))
         {
             $hasError=true;
-            $month_error="Field can not be Empty";
+            $birth_month_error="Field can not be Empty";
         }
         else{
-            $month=$_POST["month"];
+            $birth_month=$_POST["month"];
         }
 
-		if(isset($_POST["year"]))
+		if(empty($_POST["year"]))
         {
             $hasError=true;
-            $year_error="Field can not be Empty";
+            $birth_year_error="Field can not be Empty";
         }
         else{
-            $year=$_POST["year"];
+            $birth_year=$_POST["year"];
         }
 
 		if(empty($_POST["phone"]))
@@ -117,6 +126,32 @@
 	<title>Personal Information</title>
 	</head>
 	<body>
+	<?php
+		if(!$hasError)
+		{
+			echo $house."<br>";
+			echo $road."<br>";
+			echo $house."<br>";
+			echo $block."<br>";
+			echo $division."<br>";
+			echo $district."<br>";
+			echo $gender."<br>";
+			echo $birth_day."<br>";
+			echo $birth_month."<br>";
+			echo $birth_year."<br>";
+			echo $phone."<br>";
+		}
+	?>
+	<table style="border:2px solid black">
+			<tr>
+				<td>Step 1 > </td>
+				<td><b>Step 2 > </b></td>
+				<td>Step 4 > </td>
+				<td>Step 4 > </td>
+				<td>Step 5 > </td>
+				<td>Step 6 > </td>
+			</tr>
+		</table>
 		<form method="POST">
 			<table align="center">
 				<tr>
@@ -140,6 +175,7 @@
 				<tr>
 				<td><br>Division:</td>
 				<td><br><select name="division">
+						<option value="---" selected disabled>--Select--</option>
 						<option <?php echo $division=='dhaka'?"selected":"" ?> value="dhaka">Dhaka</option>
 						<option <?php echo $division=='ctg'?"selected":"" ?> value="ctg">Chittagong</option>
 						<option <?php echo $division=='sylhet'?"selected":"" ?> value="sylhet">Sylhet</option>
@@ -150,6 +186,7 @@
 				<tr>
 					<td>District:</td>
 					<td><select name="district">
+						<option value="---" selected disabled>--Select--</option>
 						<option <?php echo $district=='gazipur'?"selected":"" ?> value="gazipur">Gazipur</option>
 						<option <?php echo $district=='gopalganj'?"selected":"" ?> value="gopalganj">Gopalganj</option>
 						<option <?php echo $district=='kisorganj'?"selected":"" ?> value="kisorganj">Kishoreganj</option>
@@ -167,15 +204,15 @@
 						<?php echo $birth_day; ?>
                         <span>Day</span>
                         <select name="day" id="day">
-                                <?php for($i=1;$i<=31;$i++){ echo "<option value=$i ",$birth_day==$i?'selected':'',">$i</option>"; } ?>
+                                <?php for($i=1;$i<=31;$i++){ echo "<option value='$i' ", $birth_day==$i?'selected':'',">$i</option>"; } ?>
                         </select> 
                         <span>Month</span>
                         <select name="month" id="month">
-                                <?php for($i=1;$i<=12;$i++){ echo "<option value=$i ",$birth_month==$i?'selected':'',">$i</option>"; } ?>
+                                <?php for($i=1;$i<=12;$i++){ echo "<option value='$i' ",$birth_month==$i?'selected':'',">$i</option>"; } ?>
                         </select> <br>
                         <span>Year</span>
                         <select name="year" id="year">
-                                <?php for($i=1990;$i<=2008;$i++){ echo "<option value=$i ",$birth_year==$i?'selected':'',">$i</option>"; } ?>
+                                <?php for($i=1990;$i<=2008;$i++){ echo "<option value='$i' ",$birth_year==$i?'selected':'',">$i</option>"; } ?>
                         </select>
                     </td>
 				</tr>

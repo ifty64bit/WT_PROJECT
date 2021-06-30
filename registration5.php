@@ -139,6 +139,31 @@
         <title>Reg 5</title>
     </head>
     <body>
+    <?php 
+        if(!$hasError)
+        {
+            echo $n_f_name."<br>";
+            echo $n_l_name."<br>";
+            echo $n_nid."<br>";
+            echo $n_father_name."<br>";
+            echo $n_father_nid."<br>";
+            echo $n_mother_name."<br>";
+            echo $n_mother_nid."<br>";
+            echo $n_address."<br>";
+            echo $n_phone."<br>";
+            echo $n_occupation."<br>";
+        }
+    ?>
+        <table style="border:2px solid black">
+			<tr>
+				<td>Step 1 > </td>
+				<td>Step 2 > </td>
+				<td>Step 4 > </td>
+				<td>Step 4 > </td>
+				<td><b>Step 5 > </b></td>
+				<td>Step 6 > </td>
+			</tr>
+		</table>
         <form action="" method="post">
             <fieldset>
                 <legend><h2>Registration Form for Nominee</h2></legend>
@@ -202,6 +227,6 @@
                 </table>
             </fieldset>
         </form>
-		<a href="./registrationform6.php"><button>Next</button></a>
+		<a href="./registration6.php"><button>Next</button></a>
     </body>
 </html>

@@ -145,6 +145,21 @@
     <title>Family Information</title>
 </head>
 <body>
+    <?php 
+        if(!$hasError)
+        {
+            echo $f_name."<br>";
+            echo $f_nid."<br>";
+            echo $f_occupation."<br>";
+            echo $f_phone."<br>";
+            echo $f_work."<br>";
+            echo $m_name."<br>";
+            echo $m_nid."<br>";
+            echo $m_occupation."<br>";
+            echo $m_phone."<br>";
+            echo $m_work."<br>";
+        }
+    ?>
     <form action="" method="post">
         <fieldset>
             <legend><h2>Family Info</h2></legend>

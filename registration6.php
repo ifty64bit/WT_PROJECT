@@ -67,9 +67,28 @@
         <title>Reg 6</title>
     </head>
     <body>
+    <?php
+        if(!$hasError)
+        {
+            echo $acc_number."<br>";
+            echo $acc_type."<br>";
+            echo $tranc_limit."<br>";
+            echo $with_limit."<br>";
+        } 
+    ?>
+        <table style="border:2px solid black">
+			<tr>
+				<td>Step 1 > </td>
+				<td>Step 2 > </td>
+				<td>Step 4 > </td>
+				<td>Step 4 > </td>
+				<td>Step 5 > </td>
+				<td><b>Step 6 > </b></td>
+			</tr>
+		</table>
         <form action="" method="post">
             <fieldset>
-                <legend>Account Settings</legend>
+                <legend><h2>Account Settings</h2></legend>
                 <table align="center">
                     <tr>
                         <td>Account Number:</td>
@@ -107,5 +126,6 @@
                 </table>
             </fieldset>
         </form>
+        <a href="./_home.html"><button>Next</button></a>
     </body>
 </html>

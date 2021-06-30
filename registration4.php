@@ -61,6 +61,25 @@
         <title>Page Title</title>
     </head>
     <body> 
+    <?php 
+        if(!$hasError)
+        {
+            echo $m_name."<br>";
+            echo $m_nid."<br>";
+            echo $m_work_addr."<br>";
+            echo $m_occupation."<br>";
+        }
+    ?>
+        <table style="border:2px solid black">
+			<tr>
+				<td>Step 1 > </td>
+				<td>Step 2 > </td>
+				<td>Step 4 > </td>
+				<td><b>Step 4 > </b></td>
+				<td>Step 5 > </td>
+				<td>Step 6 > </td>
+			</tr>
+		</table>
         <form action="" method="POST"> 
             <fieldset>
                 <legend><h2>Parent's Info</h2></legend>
@@ -99,7 +118,7 @@
                 </table>
             </fieldset>
         </form>
-        <a href="./registrationform5.php"><button>Next</button></a>
+        <a href="./registration5.php"><button>Next</button></a>
     </body>
 </html>
   
