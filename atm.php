@@ -2,8 +2,10 @@
     
     $acc_number="";
     $acc_number_error="";
-    $tranc_amount="";
-    $tranc_amount_error="";
+    $with_amount="";
+    $with_amount_error="";
+    $with_amount2="";
+    $with_amount2_error="";
     $password="";
     $password_error="";
     $hasError=false;
@@ -26,18 +28,39 @@
             $acc_number=$_POST['acc_number'];
         }
 
-        if(empty($_POST['transc_amount']))
+        if(empty($_POST['with_amount']))
         {
             $hasError=true;
-            $tranc_amount_error="This Field IS Required";
+            $with_amount_error="This Field IS Required";
         }
-        elseif(!is_numeric($_POST['transc_amount']))
+        elseif(!is_numeric($_POST['with_amount']))
         {
             $hasError=true;
-            $tranc_amount_error="This Field Must Be Numaric";
+            $with_amount_error="This Field Must Be Numaric";
         }
         else{
-            $transc_amount=$_POST['transc_amount'];
+            $with_amount=$_POST['with_amount'];
+        }
+
+        if(empty($_POST['with_amount2']))
+        {
+            $hasError=true;
+            $with_amount2_error="This Field IS Required";
+        }
+        elseif(!is_numeric($_POST['with_amount2']))
+        {
+            $hasError=true;
+            $with_amount2_error="This Field Must Be Numaric";
+        }
+        else{
+            $with_amount2=$_POST['with_amount2'];
+        }
+
+        if($with_amount!=$with_amount2)
+        {
+            $hasError=true;
+            $with_amount_error="Ammount does not match";
+            $with_amount2_error="Ammount does not match";
         }
 
         if(empty($_POST['password']))
@@ -52,21 +75,37 @@
 ?>
 <html> 
     <head> 
-        <title>Send Money</title>
+        <title>ATM Withdraw</title>
     </head>
-    <body> 
+    <body>
+        <?php
+            if(!$hasError)
+            {
+                echo $acc_number."<br>";
+                echo $with_amount."<br>";
+                echo $with_amount2."<br>";
+                echo $password."<br>";
+            }
+        ?>
         <form action="" method="post"> 
             <table align="center" >
-                
+                <tr>
                     <td>Accound Number:</td> 
-                    <td><input type="text" name="acc_number"></td> 
+                    <td><input type="text" name="acc_number" value="<?php echo $acc_number ?>"></td> 
                     <td><?php echo $acc_number_error ?></td>
                 </tr>
                 <tr>
-                    <td>Transaction Amount:</td> 
-                    <td><input type="text" name="transc_amount"></td>
-                    <td><?php echo $tranc_amount_error ?></td>
+                    <td>Withdraw Amount:</td> 
+                    <td><input type="text" name="with_amount" value="<?php echo $with_amount ?>"></td>
+                    <td><?php echo $with_amount_error ?></td>
                 </tr>
+
+                <tr>
+                    <td>Type Withdraw Amount again:</td> 
+                    <td><input type="text" name="with_amount2" value="<?php echo $with_amount2 ?>"></td>
+                    <td><?php echo $with_amount2_error ?></td>
+                </tr>
+
                 <tr>
                     <td>Password:</td> 
                     <td><input type="Password" name="password"></td>
