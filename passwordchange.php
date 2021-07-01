@@ -7,6 +7,18 @@
     $password2_error="";
     $hasError=false;
 
+    function checkSpecialChar($str) {
+        $len=strlen($str);
+		for($i=0;$i<$len;$i++)
+		{
+			if($str[$i]=='#')
+			{
+				return true;
+			}
+		}
+        return false;
+	}
+
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
         if(empty($_POST['prev_password']))
@@ -28,7 +40,12 @@
 			$hasError=true;
 			$password1_error="Password must be greater then 6";
 		}
-		elseif(!(strpos($_POST['password1'],'#')>0) and !(strpos($_POST['password2'],'#')>0))
+		elseif(!checkSpecialChar($_POST['password1']))
+		{
+			$hasError=true;
+			$password1_error="Password must Contain special Char";
+		}
+		elseif(!checkSpecialChar($_POST['password2']))
 		{
 			$hasError=true;
 			$password1_error="Password must Contain special Char";
@@ -50,6 +67,14 @@
         <title>Password Change</title>
     </head>
     <body>
+    <?php
+        if(!$hasError)
+        {
+            echo $prev_password."<br>";
+            echo $password1."<br>";
+            echo $password2."<br>";
+        }
+    ?>
         <form method="POST">
             <fieldset>
                 <legend><h2>Password Change</h2></legend>
@@ -59,17 +84,17 @@
                     </tr>
                     <tr>
                         <td align="left">Previous Password</td>
-                        <td>:<input type="text" name="prev_password" value="<?php echo $prev_password ?>"></td>
+                        <td>:<input type="password" name="prev_password" value="<?php echo $prev_password ?>"></td>
                         <td><?php echo $prev_password_error ?></td>
                     </tr>
                     <tr>
                         <td align="left">New Password</td>
-                        <td>:<input type="text" name="password1" value="<?php echo $password1 ?>"></td>
+                        <td>:<input type="password" name="password1" value="<?php echo $password1 ?>"></td>
                         <td><?php echo $password1_error ?></td>
                     </tr>
                     <tr>
                         <td align="left">Confirm new Password</td>
-                        <td>:<input type="text" name="password2" value="<?php echo $password2 ?>"></td>
+                        <td>:<input type="password" name="password2" value="<?php echo $password2 ?>"></td>
                         <td><?php echo $password2_error ?></td>
                     </tr>
                     <tr>

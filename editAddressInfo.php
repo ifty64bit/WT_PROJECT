@@ -90,11 +90,11 @@
     <?php 
         if(!$hasError)
         {
-            echo $addr_house;
-            echo $addr_road;
-            echo $addr_block;
-            echo $zip;
-            echo $phone;
+            echo $addr_house."<br>";
+            echo $addr_road."<br>";
+            echo $addr_block."<br>";
+            echo $zip."<br>";
+            echo $phone."<br>";
         }
     ?>
     <form action="" method="post">

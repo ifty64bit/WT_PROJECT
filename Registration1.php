@@ -13,6 +13,18 @@
 	$password2_error="";
 	$hasError=false;
 
+	function checkSpecialChar($str) {
+        $len=strlen($str);
+		for($i=0;$i<$len;$i++)
+		{
+			if($str[$i]=='#')
+			{
+				return true;
+			}
+		}
+        return false;
+	}
+
 	if($_SERVER['REQUEST_METHOD']=='POST')
 	{
 		if(empty($_POST['user_name']))
@@ -75,7 +87,12 @@
 			$hasError=true;
 			$password1_error="Password must be greater then 6";
 		}
-		elseif(!(strpos($_POST['password1'],'#')>0) and !(strpos($_POST['password2'],'#')>0))
+		elseif(!checkSpecialChar($_POST['password1']))
+		{
+			$hasError=true;
+			$password1_error="Password must Contain special Char";
+		}
+		elseif(!checkSpecialChar($_POST['password2']))
 		{
 			$hasError=true;
 			$password1_error="Password must Contain special Char";
@@ -95,12 +112,33 @@
 ?>
 <html>
 	<head>
-		<title>User Form</title>
+		<title>Sign Up</title>
 	</head>
 	<body>
+		<?php
+			if(!$hasError)
+			{
+				echo $user_name."<br>"; 
+				echo $first_name."<br>";
+				echo $last_name."<br>";
+				echo $email."<br>";
+				echo $password1."<br>";
+				echo $password2."<br>";     
+			} 
+		?>
+		<table style="border:2px solid black">
+			<tr>
+				<td><b>Step 1 > </b></td>
+				<td>Step 2 > </td>
+				<td>Step 4 > </td>
+				<td>Step 4 > </td>
+				<td>Step 5 > </td>
+				<td>Step 6 > </td>
+			</tr>
+		</table>
 		<form action="" method="POST">
 			<fieldset>
-				<legend><h2>Sign Up::Step 1</h2></legend>
+				<legend><h2>Personal Info</h2></legend>
 				<table align="center">
 					<tr>
 						<td>Username:</td>
@@ -139,7 +177,11 @@
 				</table>
 			</fieldset>
 		</form>
+<<<<<<< HEAD:Registration_form_1.php
 		<a href="./Registration_form_2.php"><button>Next</button></a>
+=======
+		<a href="./Registration2.php"><button>Next</button></a>
+>>>>>>> 46d10211ce893de91de2a967bfb85e3cd72f98c3:Registration1.php
 	</body>
 </html>
 

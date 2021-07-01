@@ -57,9 +57,28 @@
 ?>
 <html> 
     <head> 
-        <title>Page Title</title>
+        <title>Sign Up</title>
     </head>
-    <body> 
+    <body>
+    <?php 
+        if(!$hasError)
+        {
+            echo $f_name."<br>";
+            echo $f_nid."<br>";
+            echo $f_work_addr."<br>";
+            echo $f_occupation."<br>";
+        }
+    ?>
+        <table style="border:2px solid black">
+			<tr>
+				<td>Step 1 > </td>
+				<td>Step 2 > </td>
+				<td><b>Step 3 > </b></td>
+				<td>Step 4 > </td>
+				<td>Step 5 > </td>
+				<td>Step 6 > </td>
+			</tr>
+		</table>
         <form action="" method="post"> 
             <fieldset>
                 <legend><h2>Parent's Info</h2></legend>
@@ -94,7 +113,6 @@
                     <tr> 
                         <td> 
                             <input type="submit" value="Submit">
-                            <td><a href="./registration4.php"><button>Next</button></a></td>
                         </td> 
                     </tr> 
                 </table>
