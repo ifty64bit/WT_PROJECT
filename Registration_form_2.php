@@ -164,7 +164,7 @@
 				</tr>
 					<td>Date of Birth:</td>
                 	<td>
-						<?php echo $day; ?>
+						<?php echo $birth_day; ?>
                         <span>Day</span>
                         <select name="day" id="day">
                                 <?php for($i=1;$i<=31;$i++){ echo "<option value=$i ",$birth_day==$i?'selected':'',">$i</option>"; } ?>
@@ -191,7 +191,7 @@
 				</tr>
 			</table>
 		</form>
-		<?php echo $hasError?"":'<a href="./registration3.php"><button>Next</button></a>' ?>
+		<a href="./registration3.php"><button>Next</button></a>
 	</body>
 </html>
 

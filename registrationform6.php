@@ -64,7 +64,7 @@
 
 <html>
     <head>
-        <title>Step 6</title>
+        <title>Reg 6</title>
     </head>
     <body>
         <form action="" method="post">
