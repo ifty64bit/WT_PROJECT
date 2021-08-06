@@ -1,6 +1,7 @@
 <?php 
-    $acc_number="";
-    $acc_number_error="";
+    include('./Model/db_config.php');
+    #$acc_number="";
+    #$acc_number_error="";
     $acc_type="";
     $acc_type_error="";
     $tranc_limit="";
@@ -11,19 +12,6 @@
 
     if($_SERVER['REQUEST_METHOD']=='POST')
     {
-        if(empty($_POST['acc_number']))
-        {
-            $hasError=true;
-            $acc_number_error="Field Can Not Be Empty";
-        }
-        elseif(!is_numeric($_POST['acc_number'])){
-            $hasError=true;
-            $acc_number_error="Field Value Must BE Numaric";
-        }
-        else{
-            $acc_number=$_POST['acc_number'];
-        }
-
         if(!isset($_POST['acc_type']))
         {
             $hasError=true;
@@ -58,6 +46,30 @@
         else{
             $with_limit=$_POST['with_limit'];
         }
+        if(!$hasError)
+        {
+            
+            $query="INSERT INTO user(username,fname,lname,email,password,status) VALUES(".$_COOKIE['uname'].",".$_COOKIE['first_name'].",".$_COOKIE['last_name'].",".$_COOKIE['email'].",".$_COOKIE['password'].",'Pending')";
+            echo $query;
+            $result=execute($query);
+            if($result==true)
+            {
+                echo "INSERTED USER";
+            }
+            else{
+                echo "ERROR";
+            }
+            $query2="SELECT id FROM `user` WHERE username=".$_COOKIE['uname'];
+            echo get($query2);
+            $id=get($query2);
+            $querry3="INSERT INTO account(user_id,acc_type,tran_limit,with_limit) VALUES('$id','$acc_type','$tranc_limit','$with_limit')";
+            execute($querry3);
+            $birth=$_COOKIE['b_year']."-".$_COOKIE['b_month']."-".$_COOKIE['b_day'];
+            $querry4="INSERT INTO about_user(id,house,road,block,division,district,gender,birth,phone) VALUES('$id',".$_COOKIE['house'].",".$_COOKIE['road'].",".$_COOKIE['block'].",".$_COOKIE['division'].",".$_COOKIE['district'].",".$_COOKIE['gender'].",'$birth',".$_COOKIE['phone'].")";
+            execute($querry4);
+            //$querry5="INSERT INTO nominee_user(id,n_first_name,n_last_name,nominee_nid,n_father_name,n_father_nid,n_mother_name,n_mother_nid,addr,n_phone,n_occu) VALUES('$id',)";
+
+        } 
     }
 
 ?>
@@ -67,15 +79,6 @@
         <title>Sign Up</title>
     </head>
     <body>
-    <?php
-        if(!$hasError)
-        {
-            echo $acc_number."<br>";
-            echo $acc_type."<br>";
-            echo $tranc_limit."<br>";
-            echo $with_limit."<br>";
-        } 
-    ?>
         <table style="border:2px solid black">
 			<tr>
 				<td>Step 1 > </td>
@@ -90,11 +93,6 @@
             <fieldset>
                 <legend><h2>Account Info</h2></legend>
                 <table align="center">
-                    <tr>
-                        <td>Account Number:</td>
-                        <td><input type="text" name="acc_number" value="<?php echo $acc_number ?>"></td>
-                        <td><?php echo $acc_number_error ?></td>
-                    </tr>
                     <tr>
                         <td>Account Type</td>
                         <td>
@@ -121,7 +119,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Next"></td>
+                        <td><input type="submit" value="Complete"></td>
                     </tr>
                 </table>
             </fieldset>

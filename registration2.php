@@ -119,6 +119,20 @@
             $phone=$_POST["phone"];
         }
 
+		if(!$hasError)
+		{
+			setcookie('house',$house,time()+(60*10));
+			setcookie('road',$road,time()+(60*10));
+			setcookie('block',$block,time()+(60*10));
+			setcookie('division',$division,time()+(60*10));
+			setcookie('district',$district,time()+(60*10));
+			setcookie('gender',$gender,time()+(60*10));
+			setcookie('b_day',$birth_day,time()+(60*10));
+			setcookie('b_month',$birth_month,time()+(60*10));
+			setcookie('b_year',$birth_year,time()+(60*10));
+			setcookie('phone',$phone,time()+(60*10));
+			header('Location: registration3.php');
+		}
 	}
 ?>
 <html>
@@ -126,22 +140,6 @@
 	<title>Sign Up</title>
 	</head>
 	<body>
-	<?php
-		if(!$hasError)
-		{
-			echo $house."<br>";
-			echo $road."<br>";
-			echo $house."<br>";
-			echo $block."<br>";
-			echo $division."<br>";
-			echo $district."<br>";
-			echo $gender."<br>";
-			echo $birth_day."<br>";
-			echo $birth_month."<br>";
-			echo $birth_year."<br>";
-			echo $phone."<br>";
-		}
-	?>
 	<table style="border:2px solid black">
 			<tr>
 				<td>Step 1 > </td>

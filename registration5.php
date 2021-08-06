@@ -131,6 +131,20 @@
         else{
             $n_address=$_POST['n_address'];
         }
+        if(!$hasError)
+        {
+            setcookie('n_first_name',$n_f_name,time()+(60*10));
+            setcookie('n_last_name',$n_l_name,time()+(60*10));
+            setcookie('n_nid',$n_nid,time()+(60*10));
+            setcookie('n_father_name',$n_father_name,time()+(60*10));
+            setcookie('n_father_nid',$n_father_nid,time()+(60*10));
+            setcookie('n_mother_name',$n_mother_name,time()+(60*10));
+            setcookie('n_mother_nid',$n_mother_nid,time()+(60*10));
+            setcookie('n_addr',$n_address,time()+(60*10));
+            setcookie('n_phone',$n_phone,time()+(60*10));
+            setcookie('n_occu',$n_occupation,time()+(60*10));
+            header('Location: registration6.php');
+        }
     }
 
 ?>
@@ -139,21 +153,6 @@
         <title>Sign Up</title>
     </head>
     <body>
-    <?php 
-        if(!$hasError)
-        {
-            echo $n_f_name."<br>";
-            echo $n_l_name."<br>";
-            echo $n_nid."<br>";
-            echo $n_father_name."<br>";
-            echo $n_father_nid."<br>";
-            echo $n_mother_name."<br>";
-            echo $n_mother_nid."<br>";
-            echo $n_address."<br>";
-            echo $n_phone."<br>";
-            echo $n_occupation."<br>";
-        }
-    ?>
         <table style="border:2px solid black">
 			<tr>
 				<td>Step 1 > </td>

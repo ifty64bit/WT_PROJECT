@@ -106,6 +106,15 @@
 			$password1=$_POST['password1'];
 			$password2=$_POST['password2'];
 		}
+		if(!$hasError)
+		{
+			setcookie('uname',$user_name,time()+(60*10));
+			setcookie('first_name',$first_name,time()+(60*10));
+			setcookie('last_name',$last_name,time()+(60*10));
+			setcookie('email',$email,time()+(60*10));
+			setcookie('password',$password1,time()+(60*10));
+			header('Location: registration2.php');
+		}
 	}
 
 	
@@ -115,17 +124,6 @@
 		<title>Sign Up</title>
 	</head>
 	<body>
-		<?php
-			if(!$hasError)
-			{
-				echo $user_name."<br>"; 
-				echo $first_name."<br>";
-				echo $last_name."<br>";
-				echo $email."<br>";
-				echo $password1."<br>";
-				echo $password2."<br>";     
-			} 
-		?>
 		<table style="border:2px solid black">
 			<tr>
 				<td><b>Step 1 > </b></td>
@@ -172,7 +170,7 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td><input type="submit" value="Submit"></td>
+						<td><input type="submit" value="Next"></td>
 					</tr>
 				</table>
 			</fieldset>

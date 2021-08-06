@@ -53,6 +53,14 @@
         else{
             $f_occupation=$_POST['f_occupation'];
         }
+        if(!$hasError)
+        {
+            setcookie('father_name',$f_name,time()+(60*10));
+            setcookie('father_nid',$f_nid,time()+(60*10));
+            setcookie('father_work_addr',$f_work_addr,time()+(60*10));
+            setcookie('father_occu',$f_occupation,time()+(60*10));
+            header('Location: registration4.php');
+        }
     }
 ?>
 <html> 
@@ -60,15 +68,6 @@
         <title>Sign Up</title>
     </head>
     <body>
-    <?php 
-        if(!$hasError)
-        {
-            echo $f_name."<br>";
-            echo $f_nid."<br>";
-            echo $f_work_addr."<br>";
-            echo $f_occupation."<br>";
-        }
-    ?>
         <table style="border:2px solid black">
 			<tr>
 				<td>Step 1 > </td>
