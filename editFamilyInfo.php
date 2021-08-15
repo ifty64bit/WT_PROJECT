@@ -1,23 +1,25 @@
-<?php 
-    $f_name="father Name";
+<?php
+    include("./Model/db_config.php");
+    session_start();
+    $id=$_SESSION['id'];
+    $query="SELECT * FROM parents where id='$id'";
+    $data=get($query);
+    $data=$data[0];
+    $f_name=$data['father_name'];
     $f_name_err="";
-    $f_nid="012548655";
+    $f_nid=$data['father_nid'];
     $f_nid_err="";
-    $f_occupation="Job";
+    $f_occupation=$data['father_occu'];
     $f_occupation_err="";
-    $f_phone="0121212";
-    $f_phone_err="";
-    $f_work="somewhere";
+    $f_work=$data['father_addr'];
     $f_work_err="";
-    $m_name="mother Name";
+    $m_name=$data['mother_name'];
     $m_name_err="";
-    $m_nid="012548655";
+    $m_nid=$data['mother_nid'];
     $m_nid_err="";
-    $m_occupation="Job";
+    $m_occupation=$data['mother_occu'];
     $m_occupation_err="";
-    $m_phone="0121212";
-    $m_phone_err="";
-    $m_work="somewhere";
+    $m_work=$data['mother_addr'];
     $m_work_err="";
     $hasError=false;
 
@@ -53,20 +55,6 @@
         }
         else{
             $f_occupation=$_POST['f_occupation'];
-        }
-
-        if(empty($_POST['f_phone']))
-        {
-            $hasError=true;
-            $f_phone_err="Fied Can Not Be Empty";
-        }
-        elseif(!is_numeric($_POST['f_phone']))
-        {
-            $hasError=true;
-            $f_phone_err="Phone Must Be Numaric";
-        }
-        else{
-            $f_phone=$_POST['f_phone'];
         }
 
         if(empty($_POST['f_work']))
@@ -111,20 +99,6 @@
             $m_occupation=$_POST['m_occupation'];
         }
 
-        if(empty($_POST['m_phone']))
-        {
-            $hasError=true;
-            $m_phone_err="Fied Can Not Be Empty";
-        }
-        elseif(!is_numeric($_POST['m_phone']))
-        {
-            $hasError=true;
-            $m_phone_err="Phone Must Be Numaric";
-        }
-        else{
-            $m_nid=$_POST['m_phone'];
-        }
-
         if(empty($_POST['m_work']))
         {
             $hasError=true;
@@ -132,6 +106,16 @@
         }
         else{
             $m_work=$_POST['f_work'];
+        }
+
+        if(!$hasError)
+        {
+            $query="UPDATE parents SET father_name='$f_name', father_nid='$f_nid', father_addr='$f_work', father_occu='$f_occupation', mother_name='$m_name', mother_nid='$m_nid', mother_addr='$m_work', mother_occu='$m_occupation' where id='$id'";
+            $result=execute($query);
+            if($result!=true)
+            {
+                print_r($result);
+            }
         }
     }
 ?>
@@ -142,27 +126,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Family Information</title>
 </head>
 <body>
     <?php 
-        if(!$hasError)
-        {
-            echo $f_name."<br>";
-            echo $f_nid."<br>";
-            echo $f_occupation."<br>";
-            echo $f_phone."<br>";
-            echo $f_work."<br>";
-            echo $m_name."<br>";
-            echo $m_nid."<br>";
-            echo $m_occupation."<br>";
-            echo $m_phone."<br>";
-            echo $m_work."<br>";
-        }
+       include("./header.php");
     ?>
-    <form action="" method="post">
-        <fieldset>
-            <legend><h2>Family Info</h2></legend>
+    <div class="form_container">
+        <form action="" method="post">
+            <h2>Family Info</h2>
             <table align="center">
                 <tr>
                     <td>Father's Name:</td>
@@ -188,11 +161,6 @@
                     <td><?php echo $f_occupation_err ?></td>
                 </tr>
                 <tr>
-                    <td>Phone</td>
-                    <td><input type="text" name="f_phone" id="f_phone" value="<?php echo $f_phone ?>"></td>
-                    <td><?php echo $f_phone_err ?></td>
-                </tr>
-                <tr>
                     <td>Father Work Address</td>
                     <td><input type="text" name="f_work" id="f_work" value="<?php echo $f_work ?>"></td>
                     <td><?php echo $f_work_err ?></td>
@@ -213,29 +181,23 @@
                 </tr>
                 <tr>
                     <td>
-                        Occupation:
+                         Occupation:
                     </td>
                     <td>
                         <input type="text" name="m_occupation" id="m_occupation" value="<?php echo $m_occupation ?>">
                     </td>
                     <td><?php echo $m_occupation_err ?></td>
                 </tr>
-                <tr>
-                    <td>Phone</td>
-                    <td><input type="text" name="m_phone" id="m_phone" value="<?php echo $m_phone ?>"></td>
-                    <td><?php echo $m_phone_err ?></td>
-                </tr>
-                <tr>
                     <td>Mother's Work Address</td>
                     <td><input type="text" name="m_work" id="m_work" value="<?php echo $m_work ?>"></td>
                     <td><?php echo $m_work_err ?></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="Save"></td>
+                    <td><input class="btn" type="submit" value="Save"></td>
                 </tr>
             </table>
-        </fieldset>
-    </form>
+        </form>
+    </div>
 </body>
 </html>

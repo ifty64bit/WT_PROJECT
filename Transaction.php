@@ -1,80 +1,31 @@
-<?php 
-    $acc_name="";
-    $acc_name_error="";
-    $acc_number="";
-    $acc_number_error="";
-    $transc_amount="";
-    $transc_amount_error="";
-    $password="";
-    $password_error="";
-    $hasError=false;
-
-    if($_SERVER['REQUEST_METHOD']=='POST')
-    {
-        if(empty($_POST['acc_name']))
-        {
-            $hasError=true;
-            $acc_name_error="Field Can Not Be Empty";
-        }
-        else{
-            $acc_name=$_POST['acc_name'];
-        }
-
-        if(empty($_POST['acc_number']))
-        {
-            $hasError=true;
-            $acc_number_error="This Field IS Required";
-        }
-        elseif(!is_numeric($_POST['acc_number']))
-        {
-            $hasError=true;
-            $acc_number_error="Account Number Must Be Numaric";
-        }
-        else{
-            $acc_number=$_POST['acc_number'];
-        }
-
-        if(empty($_POST['transc_amount']))
-        {
-            $hasError=true;
-            $transc_amount_error="This Field IS Required";
-        }
-        elseif(!is_numeric($_POST['transc_amount']))
-        {
-            $hasError=true;
-            $transc_amount_error="This Field Must Be Numaric";
-        }
-        else{
-            $transc_amount=$_POST['transc_amount'];
-        }
-
-        if(empty($_POST['password']))
-        {
-            $hasError=true;
-            $password_error="Field Can Not Be Empty";
-        }
-        else{
-            $password=$_POST['password'];
-        }
-    }
+<?php
+    include('./Controller/Transaction.php');
 ?>
+<!DOCTYPE html>
 <html> 
-    <head> 
+    <head>
+        <link rel="stylesheet" href="./css/style.css">
         <title>Send Money</title>
     </head>
     <body>
-    <?php
-        if(!$hasError)
-        {
-            echo $acc_name."<br>";
-            echo $acc_number."<br>";
-            echo $transc_amount."<br>";
-            echo $password."<br>";
-        }
-    ?>
-        <form action="" method="post">
-            <fieldset>
-                <legend><h2>Transfer Money</h2></legend>
+        <?php
+            include('./header.php');
+            if($status=="w_p")
+            {
+                echo "<div class='err'>Wrong Password!!!</div>";
+            }
+            elseif($status=="u_n_f")
+            {
+                echo "<div class='err'>Reciever Name or Account Number Missmatch</div>";
+            }
+            elseif($status=="sent")
+            {
+                echo "<div class='pass'>Money Sent. GO <a href='./_home.php'>Home</a></div>";
+            }
+        ?>
+        <div class="form_container">
+            <form action="" method="post">
+                <h2>Transfer Money</h2>
                 <table align="center" >
                     <tr> 
                         <td>Receiver Name:</td> 
@@ -99,11 +50,11 @@
 
                     <tr> 
                         <td> 
-                            <input type="submit" value="Send Money">
+                            <input class="btn" name="transaction" type="submit" value="Send Money">
                         </td> 
                     </tr> 
                 </table>
-            </fieldset>
-        </form>
+            </form>
+        </div>
     </body>
 </html>

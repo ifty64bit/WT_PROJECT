@@ -1,86 +1,27 @@
 <?php 
-    $m_name="";
-    $m_name_error="";
-    $m_nid="";
-    $m_nid_error="";
-    $m_work_addr="";
-    $m_work_addr_error="";
-    $m_occupation="";
-    $m_occupation_error="";
-    $hasError=false;
-
-    if($_SERVER['REQUEST_METHOD']=='POST')
-    {
-        if(empty($_POST['m_name']))
-        {
-            $hasError=true;
-            $m_name_error="Field Can Not Be Empty";
-        }
-
-        else{
-            $m_name=$_POST['m_name'];
-        }
-
-        if(empty($_POST['m_nid']))
-        {
-            $hasError=true;
-            $m_nid_error="Field Can Not Be Empty";
-        }
-        elseif(!is_numeric($_POST['m_nid'])){
-            $hasError=true;
-            $m_nid_error="Field Value Must BE Numaric";
-        }
-        else{
-            $m_nid=$_POST['m_nid'];
-        }
-
-        if(empty($_POST['m_work_addr']))
-        {
-            $hasError=true;
-            $m_work_addr_error="Field Can Not Be Empty";
-        }
-
-        else{
-            $m_work_addr=$_POST['m_work_addr'];
-        }
-
-        if(!isset($_POST['m_occupation']))
-        {
-            $hasError=true;
-            $m_occupation_error="Field Can Not Be Empty";
-        }
-
-        else{
-            $m_occupation=$_POST['m_occupation'];
-        }
-        if(!$hasError)
-        {
-            setcookie('mother_name',$m_name,time()+(60*10));
-            setcookie('mother_nid',$m_nid,time()+(60*10));
-            setcookie('mother_worl_addr',$m_work_addr,time()+(60*10));
-            setcookie('mother_occu',$m_occupation,time()+(60*10));
-            header('Location: registration5.php');
-        }
-    }
+    include('./Controller/registration4.php');
 ?>
 
+<!DOCTYPE html>
 <html> 
     <head> 
+        <link rel="stylesheet" href="./css/style.css">
         <title>Sign Up</title>
     </head>
     <body> 
-        <table style="border:2px solid black">
-			<tr>
-				<td>Step 1 > </td>
-				<td>Step 2 > </td>
-				<td>Step 4 > </td>
-				<td><b>Step 4 > </b></td>
-				<td>Step 5 > </td>
-				<td>Step 6 > </td>
-			</tr>
-		</table>
-        <form action="" method="POST"> 
-            <fieldset>
+    <?php include("./header.php") ?>
+        <div class="progress">
+            <h3>
+                <span style="color: #00FF0A;">Step 1 > </span>
+                <span style="color: #00FF0A;">Step 2 > </span>
+                <span style="color: #00FF0A;">Step 3 > </span>
+                <span style="color: #000000;">Step 4 > </span>
+                <span>Step 5 > </span>
+                <span>Step 6  </span>
+            </h3>
+        </div>
+        <div class="form_container">
+            <form action="" method="POST"> 
                 <legend><h2>Parent's Info</h2></legend>
                 <table align="center">
                     <tr> 
@@ -112,12 +53,11 @@
                     </tr>
                     <tr> 
                         <td></td>
-                        <td> <input type="submit" value="Submit"></td> 
+                        <td> <input class="btn" name="reg4" type="submit" value="Submit"></td> 
                     </tr> 
                 </table>
-            </fieldset>
-        </form>
-        <a href="./registration5.php"><button>Next</button></a>
+            </form>
+        </div>
     </body>
 </html>
   
