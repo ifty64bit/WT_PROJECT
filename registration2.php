@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="./Controller/js/reg2.js"></script>
 		<link rel="stylesheet" href="./css/style.css">
 	<title>Sign Up</title>
 	</head>
@@ -27,18 +28,30 @@
 					</tr>
 					<tr>
 						<td>&nbsp; House No.:</td>
-						<td><input type="text" name="house" placeholder="House No." value="<?php echo $house ?>"></td>
+						<td><input onfocusout="checkH(this)" type="text" name="house" placeholder="House No." id="house" value="<?php echo $house ?>"></td>
 						<td><?php echo $house_error ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id="house_err"></td>
+					</tr>
+					<tr>
 						<td>&nbsp; Road No.:</td>
-						<td><input type="text" name="road" placeholder="Road No." value="<?php echo $road ?>"></td>
+						<td><input onfocusout="checkR(this)" type="text" name="road" placeholder="Road No." id="road" value="<?php echo $road ?>"></td>
 						<td><?php echo $road_error ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id="road_err"></td>
+					</tr>
+					<tr>
 						<td>&nbsp; Block No.:</td>
-						<td><input type="text" name="block" placeholder="Block No." value="<?php echo $block ?>"></td>
+						<td><input onfocusout="checkB(this)" type="text" name="block" placeholder="Block No." id="block" value="<?php echo $block ?>"></td>
 						<td><?php echo $block_error ?></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td colspan="2" id="block_err"></td>
 					</tr>
 					<tr>
 					<td><br>Division:</td>
@@ -55,6 +68,10 @@
 					<td><?php  ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id=""></td>
+					</tr>
+					<tr>
 						<td>District:</td>
 						<td><select name="district" id="district">
 								<option value="--district--" selected disabled>--District--</option>
@@ -69,10 +86,19 @@
 						<td><?php echo $district_error ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id=""></td>
+					</tr>
+					<tr>
 						<td>Gender:</td>
 						<td><input type="radio" name="gender" value="male" <?php echo $gender=='male'?"checked":'' ?>>Male<input type="radio" name="gender" value="female" <?php echo $gender=='female'?"checked":'' ?>>Female</td>
 						<td><?php echo $gender_error ?></td>
 					</tr>
+					<tr>
+						<td></td>
+						<td colspan="2" id=""></td>
+					</tr>
+					<tr>
 						<td>Date of Birth:</td>
 						<td>
 							<?php echo $birth_day; ?>
@@ -91,13 +117,21 @@
 						</td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id=""></td>
+					</tr>
+					<tr>
 						<td>Phone Number:</td>
-						<td><input type="text" name="phone" placeholder="Phone Number" value="<?php echo $phone ?>"></td>
+						<td><input onfocusout="checkP(this)" type="text" name="phone" placeholder="Phone Number" id="phone" value="<?php echo $phone ?>"></td>
 						<td><?php echo $phone_error ?></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input class="btn" name="reg2" type="submit" value="Submit"></td>
+						<td colspan="2" id="phone_err"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input class="btn" name="reg2" id="sub2" type="submit" value="Submit"></td>
 						<td></td>
 					</tr>
 				</table>

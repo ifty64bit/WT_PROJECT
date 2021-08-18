@@ -88,6 +88,10 @@ a{
     border-radius: 5px;
 }
 
+.btn:disabled{
+    background-color: #26222c;
+}
+
 .err{
     width: 100%;
     background-color: red;

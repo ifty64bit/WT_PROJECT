@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./Controller/js/login.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Login</title>
 </head>
@@ -28,15 +29,23 @@
                 <table align="center">
                     <tr>
                         <td>Username:</td>
-                        <td><input type="text" name="username"></td>
+                        <td><input onfocusout="checkU(this)" type="text" name="username"></td>
                     </tr>
+                    <tr>
+						<td></td>
+						<td colspan="2" id="uname_err"></td>
+					</tr>
                     <tr>
                         <td>Password:</td>
-                        <td><input type="text" name="password"></td>
+                        <td><input onfocusout='checkP(this)' type="text" name="password"></td>
                     </tr>
                     <tr>
+						<td></td>
+						<td colspan="2" id="p_err"></td>
+					</tr>
+                    <tr>
                         <td></td>
-                        <td><input class="btn" type="submit" name="login" value="Log in"></td>
+                        <td><input class="btn" type="submit" name="login" id="login" value="Log in"></td>
                     </tr>
                 </table>
             </form>

@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./Controller/js/reg2.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Edit Address & Personal Information</title>
 </head>
@@ -23,14 +24,26 @@
                             Address Information:
                         </td>
                         <td>
-                            <input type="text" name="house" id="house" placeholder="House No" value="<?php echo $addr_house ?>">
-                            <input type="text" name="road" id="road" placeholder="Road No" value="<?php echo $addr_road ?>"> <br>
-                            <input type="text" name="block" id="block" placeholder="Block No" value="<?php echo $addr_block ?>">
+                            <input onfocusout="checkH(this)" type="text" name="house" id="house" placeholder="House No" value="<?php echo $addr_house ?>">
+                            <input onfocusout="checkR(this)" type="text" name="road" id="road" placeholder="Road No" value="<?php echo $addr_road ?>"> <br>
+                            <input onfocusout="checkB(this)" type="text" name="block" id="block" placeholder="Block No" value="<?php echo $addr_block ?>">
                         </td>
                         <td>
                             <?php echo $addr_error ?>
                         </td>
                     </tr>
+                    <tr>
+						<td></td>
+						<td colspan="2" id="house_err"></td>
+					</tr>
+                    <tr>
+						<td></td>
+						<td colspan="2" id="road_err"></td>
+					</tr>
+                    <tr>
+						<td></td>
+						<td colspan="2" id="block_err"></td>
+					</tr>
                     <tr>
                         <td>
                             Division:
@@ -63,20 +76,16 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            ZIP:
-                        </td>
-                        <td>
-                            <input type="text" name="zip" id="zip" value="<?php echo $zip ?>">
-                        </td>
-                        <td><?php echo $zip_error ?></td>
-                    </tr>
+                    
                     <tr>
                         <td>Phone Number</td>
-                        <td><input type="text" name="phone" id="phone" placeholder="Phone" value="<?php echo $phone ?>"></td>
+                        <td><input onfocusout="checkP(this)" type="text" name="phone" id="phone" placeholder="Phone" value="<?php echo $phone ?>"></td>
                         <td><?php echo $phone_error ?></td>
                     </tr>
+                    <tr>
+						<td></td>
+						<td colspan="2" id="phone_err"></td>
+					</tr>
                     <tr>
                         <td>Date of Birth:</td>
                         <td>
@@ -107,7 +116,7 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input class="btn" name="editAddress" type="submit" value="Update"></td>
+                        <td><input id="sub2" class="btn" name="editAddress" type="submit" value="Update"></td>
                         <td></td>
                     </tr>
                 </table>

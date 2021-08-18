@@ -4,12 +4,14 @@
 
 <!DOCTYPE html>
 <html> 
-    <head> 
+    <head>
+        <script src="./Controller/js/reg4.js"></script>
         <link rel="stylesheet" href="./css/style.css">
         <title>Sign Up</title>
     </head>
     <body> 
     <?php include("./header.php") ?>
+    <div id="err_div"></div>
         <div class="progress">
             <h3>
                 <span style="color: #00FF0A;">Step 1 > </span>
@@ -26,19 +28,31 @@
                 <table align="center">
                     <tr> 
                         <td>Mother's Name:</td> 
-                        <td><input type="text" name="m_name" value="<?php echo $m_name ?>"></td> 
+                        <td><input onfocusout='checkM(this)' id="m_name" type="text" name="m_name" value="<?php echo $m_name ?>"></td> 
                         <td><?php echo $m_name_error ?></td>
                     </tr>
                     <tr>
+						<td></td>
+						<td colspan="2" id="m_err"></td>
+					</tr>
+                    <tr>
                         <td>Mother's NID:</td> 
-                        <td><input type="text" name="m_nid" value="<?php echo $m_nid ?>"></td> 
+                        <td><input onfocusout='checkNid(this)' id="m_nid" type="text" name="m_nid" value="<?php echo $m_nid ?>"></td> 
                         <td><?php echo $m_nid_error ?></td>
                     </tr>
                     <tr>
+						<td></td>
+						<td colspan="2" id="nid_err"></td>
+					</tr>
+                    <tr>
                         <td>Mother's work  Address:</td> 
-                        <td><input type="text" name="m_work_addr" value="<?php echo $m_work_addr ?>"></td> 
+                        <td><input onfocusout='checkA(this)' id="m_work_addr" type="text" name="m_work_addr" value="<?php echo $m_work_addr ?>"></td> 
                         <td><?php echo $m_work_addr_error ?></td>
                     </tr>
+                    <tr>
+						<td></td>
+						<td colspan="2" id="addr_err"></td>
+					</tr>
                     <tr> 
                         <td>Occupation:</td> 
                         <td>
@@ -53,7 +67,7 @@
                     </tr>
                     <tr> 
                         <td></td>
-                        <td> <input class="btn" name="reg4" type="submit" value="Submit"></td> 
+                        <td><input class="btn" id="sub4" name="reg4" type="submit" value="Submit"></td> 
                     </tr> 
                 </table>
             </form>

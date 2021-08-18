@@ -6,6 +6,7 @@
 	<head>
 		<link rel="stylesheet" href="./css/style.css">
 		<script src="./Controller/js/checkUser.js"></script>
+		<script src="./Controller/js/reg1.js"></script>
 		<title>Sign Up</title>
 	</head>
 	<body>
@@ -13,6 +14,7 @@
 		<div class="wrn" id="err_msg">
 
 		</div>
+		
 		<div class="progress">
 			<h3>
 				<span style="color: #000000;">Step 1 > </span>
@@ -33,33 +35,57 @@
 						<td><?php echo $user_name_error ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id="uname_err"></td>
+					</tr>
+					<tr>
 						<td>First Name:</td>
-						<td><input type="text" onfocusout='checkFname(this)' name="first_name" placeholder="First Name" value="<?php echo $first_name ?>"></td>
+						<td><input type="text" onfocusout='checkFname(this)' name="first_name" placeholder="First Name" id="f_name" value="<?php echo $first_name ?>"></td>
 						<td><?php echo $first_name_error ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id="f_name_err"></td>
+					</tr>
+					<tr>
 						<td>Last Name:</td>
-						<td><input onfocusout='checkFname(this)' type="text" name="last_name" placeholder="Last Name" value="<?php echo $last_name ?>"></td>
+						<td><input onfocusout='checkLname(this)' type="text" name="last_name" placeholder="Last Name" id="l_name" value="<?php echo $last_name ?>"></td>
 						<td><?php echo $last_name_error ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id="l_name_err"></td>
+					</tr>
+					<tr>
 						<td>Email:</td>
-						<td><input type="text" name="email" placeholder="Email" value="<?php echo $email ?>"></td>
+						<td><input onfocusout='checkE(this)' type="text" name="email" placeholder="Email" id="email" value="<?php echo $email ?>"></td>
 						<td><?php echo $email_error ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id="e_err"></td>
+					</tr>
+					<tr>
 						<td>Password:</td>
-						<td><input type="password" name="password1" placeholder="Password" value="<?php echo $password1 ?>"></td>
+						<td><input onfocusout='checkP(this)' type="password" name="password1" id="pass" placeholder="Password" value="<?php echo $password1 ?>"></td>
 						<td><?php echo $password1_error ?></td>
 					</tr>
 					<tr>
+						<td></td>
+						<td colspan="2" id="p_err"></td>
+					</tr>
+					<tr>
 						<td>Confirm Password:</td>
-						<td><input type="password" name="password2" placeholder="Confirm Password" value="<?php echo $password2 ?>"></td>
+						<td><input onfocusout='checkP2(this)' type="password" name="password2" id="pass2" placeholder="Confirm Password" value="<?php echo $password2 ?>"></td>
 						<td><?php echo $password2_error ?></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><input class="btn" class="reg1" type="submit" value="Next"></td>
+						<td colspan="2" id="p2_err"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input class="btn" id="sub1" name="reg1" type="submit" value="Next"></td>
 					</tr>
 				</table>
 			</form>

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="./Controller/js/reg6.js"></script>
         <link rel="stylesheet" href="./css/style.css">
         <title>Sign Up</title>
     </head>
@@ -38,18 +39,30 @@
                         <td><?php echo $acc_type_error ?></td>
                     </tr>
                     <tr>
+						<td></td>
+						<td colspan="2" id="m_err"></td>
+					</tr>
+                    <tr>
                         <td>Transaction Limit:</td>
-                        <td><input type="text" name="tranc_limit" value="<?php echo $tranc_limit ?>"></td>
+                        <td><input onfocusout="checkT(this)" type="text" name="tranc_limit" id="t" value="<?php echo $tranc_limit ?>"></td>
                         <td><?php echo $tranc_limit_error ?></td>
                     </tr>
                     <tr>
+						<td></td>
+						<td colspan="2" id="t_err"></td>
+					</tr>
+                    <tr>
                         <td>Withdrawl Limit:</td>
-                        <td><input type="text" name="with_limit" value="<?php echo $with_limit ?>"></td>
+                        <td><input onfocusout="checkW(this)" type="text" name="with_limit" id="w" value="<?php echo $with_limit ?>"></td>
                         <td><?php echo $with_limit_error ?></td>
                     </tr>
                     <tr>
+						<td></td>
+						<td colspan="2" id="w_err"></td>
+					</tr>
+                    <tr>
                         <td></td>
-                        <td><input class="btn" name="reg6" type="submit" value="Complete"></td>
+                        <td><input class="btn" name="reg6" id="sub6" type="submit" value="Complete"></td>
                     </tr>
                 </table>
             </form>

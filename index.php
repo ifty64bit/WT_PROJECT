@@ -11,9 +11,9 @@
     <table cellspacing="40">
         <tr>
             <td><h1>The Online<br>Banking<br>System</h1></td>
-            <td><a href="">About us</a></td>
+            <td><a href="./about.php">About us</a></td>
             <td><a href="">Support</a></td>
-            <td><a href="">Contact</a></td>
+            <td><a href="./privacy.php">Privacy Policy</a></td>
             <td><a href="./Login.php">Log in</a></td>
             <td><a href="./Registration1.php">Sign up</a></td>
         </tr>
